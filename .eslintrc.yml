@@ -15,6 +15,9 @@ rules:
     - 2
     - 1tbs
     - allowSingleLine: true
+  comma-dangle:
+    - 2
+    - always-multiline
 
 globals:
   moment: false
