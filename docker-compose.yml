@@ -1,14 +1,14 @@
 version: "3"
 
 services:
-  archiver:
-    image: dougboutwell/redfeedbluefeed-archiver:latest
-    volumes:
-      - ./credentials:/home/node/credentials
-    restart: unless-stopped
-
   site:
     image: dougboutwell/redfeedbluefeed-site:latest
+    build: .
+    restart: "no"
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - ./html:/usr/share/nginx/html
     ports:
       - "80:80"
     restart: unless-stopped
