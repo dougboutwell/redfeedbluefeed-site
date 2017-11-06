@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './build'),
-    publicPath: '/build/',
+    publicPath: '',
     filename: 'app.js',
   },
   plugins: [new HtmlWebpackPlugin({
@@ -14,14 +14,19 @@ module.exports = {
     template: 'src/index.ejs',
   })],
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.css$/,
+        use: [{
+          loader: 'style-loader', // creates style nodes from JS strings
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS
+        }],
+      },
       {
         test: /\.(html)$/,
         loader: 'file-loader?name=[path][name].[ext]!./index.html',
       },
-    ],
-
-    rules: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -60,14 +65,6 @@ module.exports = {
           loader: 'sass-loader', // compiles Sass to CSS
         }],
       },
-      {
-        test: /\.css$/,
-        use: [{
-          loader: 'style-loader', // creates style nodes from JS strings
-        }, {
-          loader: 'css-loader', // translates CSS into CommonJS
-        }],
-      },
     ],
   },
   resolve: {
@@ -76,24 +73,3 @@ module.exports = {
     },
   },
 }
-
-// if (process.env.NODE_ENV === 'production') {
-//   module.exports.devtool = '#source-map'
-//   // http://vue-loader.vuejs.org/en/workflow/production.html
-//   module.exports.plugins = (module.exports.plugins || []).concat([
-//     new webpack.DefinePlugin({
-//       'process.env': {
-//         NODE_ENV: '"production"'
-//       }
-//     }),
-//     new webpack.optimize.UglifyJsPlugin({
-//       sourceMap: true,
-//       compress: {
-//         warnings: false
-//       }
-//     }),
-//     new webpack.LoaderOptionsPlugin({
-//       minimize: true
-//     })
-//   ])
-// }
