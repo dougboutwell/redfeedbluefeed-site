@@ -4,6 +4,8 @@
   "description": "Website for Red Feed / Blue Feed news comparison service",
   "main": "index.js",
   "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery-datetimepicker": "^2.5.4",
     "moment": "^2.18.1"
   },
   "devDependencies": {

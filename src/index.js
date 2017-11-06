@@ -1,3 +1,6 @@
+require('./style.css')
+require('./calendar.png')
+
 var rfbf = {
   baseURL: 'http://storage.googleapis.com/redfeedbluefeed-snaps-mobile-2017/',
   biasClasses: {
