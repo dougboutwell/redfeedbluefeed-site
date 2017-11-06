@@ -5,13 +5,13 @@ var rfbf = {
     '-1': 'bias-2',
     '0':  'bias-3',
     '1':  'bias-4',
-    '2':  'bias-5'
+    '2':  'bias-5',
   },
   latestFileName: 'latest.json',
   catalogFileName: 'catalog.json',
   manifestFileName: 'manifest.json',
   currentFolder: '',
-  pickerSel: '#datetimepicker'
+  pickerSel: '#datetimepicker',
 }
 
 if (/localhost/.test(location.hostname) && 0) {
@@ -180,7 +180,7 @@ function updateCatalog (cb) {
           var closestFolder = closestFolderToDate(requestedDate);
           window.location = '/?date=' + encodeURIComponent(requestedDate.toISOString());
           updateImages(closestFolder);
-        }
+        },
       });
 
       rfbf.showingCalendar = false;
